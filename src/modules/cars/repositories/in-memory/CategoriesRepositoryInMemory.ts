@@ -18,7 +18,6 @@ class CategoriesRepositoryInMemory implements ICategoriesRepository {
         const category = new Category()
         Object.assign(category, { name, description });
         this.categories.push(category)
-        console.log(this.categories)
     }
 
 }
