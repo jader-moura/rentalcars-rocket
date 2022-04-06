@@ -1,22 +1,17 @@
-/*
- * For a detailed explanation regarding each configuration property and type check, visit:
- * https://jestjs.io/docs/configuration
- */
+import { pathsToModuleNameMapper } from "ts-jest/utils";
+import { compilerOptions } from "./tsconfig.json";
 
 export default {
-  bail: 1,
-  verbose: true,
   clearMocks: true,
-  coverageProvider: "v8",
-  preset: "ts-jest",
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
-  testMatch: ["**/*.spec.ts"],
-  testEnvironment: "node",
-  roots: ['<rootDir>'],
-  transform: {
-    '^.+\\.ts?$': 'ts-jest'
-  },
-  moduleFileExtensions: ['ts', 'js', 'json', 'node'],
-  // collectCoverage: true,
+  collectCoverage: true,
+  collectCoverageFrom: ["<rootDir>/src/modules/**/useCases/**/*.ts"],
   coverageDirectory: "coverage",
+  coverageProvider: "v8",
+  coverageReporters: ["text-summary", "lcov"],
+  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
+    prefix: "<rootDir>/src/",
+  }),
+  preset: "ts-jest",
+  testEnvironment: "node",
+  testMatch: ["**/*.spec.ts"]
 };

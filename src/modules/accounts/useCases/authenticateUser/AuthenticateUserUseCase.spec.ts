@@ -1,8 +1,9 @@
-import { UsersRepositoryInMemory } from "../../repositories/in-memory/UsersRepositoryInMemory"
-import { AuthenticateUserUseCase } from "./AuthenticateUserUseCase"
-import { CreateUserUseCase } from '../createUser/CreateUserUseCase'
-import { ICreateUserDTO } from "../../dtos/ICreateUserDTO"
-import { AppError } from "../../../../errors/AppError"
+import { AppError } from "@errors/AppError";
+import { ICreateUserDTO } from "@modules/accounts/dtos/ICreateUserDTO";
+import { UsersRepositoryInMemory } from "@modules/accounts/repositories/in-memory/UsersRepositoryInMemory";
+import { CreateUserUseCase } from "../createUser/CreateUserUseCase";
+import { AuthenticateUserUseCase } from "./AuthenticateUserUseCase";
+
 
 let authenticateUserUseCase: AuthenticateUserUseCase
 let usersRepositoryInMemory: UsersRepositoryInMemory
@@ -42,7 +43,7 @@ describe("Authenticate User", () => {
         }).rejects.toBeInstanceOf(AppError);
     });
 
-    it("should not be able to signin with a incorrect password", () => {
+    it("should not be able to signin with an incorrect password", () => {
         expect( async() => {
             await createUserUseCase.execute({
                 driver_license: 'asd912312',
