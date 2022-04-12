@@ -3,7 +3,7 @@
   "port": 5432,
   "host": "localhost", 
   "username": "docker",
-  "password": "ignite",
+  "password": "ignites",
   "database": "rentx", 
   "migrations": ["./src/database/migrations/*.ts"],
   "entities": ["./src/modules/**/entities/*.ts"],
